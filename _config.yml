@@ -1,0 +1,67 @@
+# SITE CONFIGURATION
+baseurl: "" # the subpath of your site, e.g. /blog/
+url: "https://czarcraft.co" # the base hostname & protocol for your site
+
+# THEME-SPECIFIC CONFIGURATION
+theme:
+  # Meta
+  title: Czarcraft
+  avatar: DLA.png
+  gravatar: # email md5 hash
+  description: "Distributed Application Development on the Litecoin Network" # used by search engines
+  
+  # Header and footer text
+  header_text: >
+    <h2>Czarcraft is a Suite of Financial Tools Designed for Litecoin</h2>
+     
+    <p class='lead'>It makes it easy to create and manage assets on the most secure scrypt network on the planet.</p>
+  footer_text: >
+   © <a href="https://treefunder.co">Treefunder Incorporated</a>
+  
+  # Icons
+  rss: false
+  email_address: # full email address, e.g. "sam@example.com"
+  behance:
+  bitbucket: 
+  dribbble: 
+  facebook: 
+  flickr: 
+  github: "czarcraft"
+  google_plus: "+CzarcraftDLA"
+  instagram: 
+  linkedin:  # full URL
+  pinterest: 
+  reddit: "czarcraft"
+  soundcloud: 
+  stack_exchange:  # full URL
+  steam: 
+  tumblr: 
+  twitter: "CzarcraftDLA"
+  wordpress: 
+  youtube: 
+  
+  # Scripts
+  google_analytics: "UA-21065583-18" # tracking id, e.g. "UA-000000-01"
+  disqus_shortname:
+  
+  # Localization strings
+  str_follow_on: "Follow on"
+  str_rss_follow: "Follow RSS feed"
+  str_email: "Email"
+  str_next: "Next"
+  str_prev: "Prev"
+  str_continue_reading: "Continue reading"
+  
+  # Colors, typography and padding
+  # Open the "_sass > base" folder, and open "_variables.scss"
+
+# PAGINATION
+paginate: 5
+paginate_path: "blog/page:num"
+
+# BUILD SETTINGS
+markdown: kramdown
+highlighter: pygments
+sass:
+  sass_dir: _sass
+  style: :compressed
