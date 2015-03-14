@@ -5,16 +5,16 @@ url: "https://czarcraft.co" # the base hostname & protocol for your site
 # THEME-SPECIFIC CONFIGURATION
 theme:
   # Meta
-  title: Czarcraft
+  title: Litetokens
   avatar: DLA.png
   gravatar: # email md5 hash
-  description: "Distributed Application Development on the Litecoin Network" # used by search engines
+  description: "The Best Way to Trade Everything" # used by search engines
   
   # Header and footer text
   header_text: >
-    <h2>Czarcraft is a Suite of Financial Tools Designed for Litecoin</h2>
+    <h2>Litetokens : the best way to trade everything.</h2>
      
-    <p class='lead'>It makes it easy to create and manage assets on the most secure scrypt network on the planet.</p>
+    <p class='lead'></p>
   footer_text: >
    © <a href="https://treefunder.co">Treefunder Incorporated</a>
   
@@ -26,22 +26,22 @@ theme:
   dribbble: 
   facebook: 
   flickr: 
-  github: "czarcraft"
-  google_plus: "+CzarcraftDLA"
+  github: "litetokens"
+  google_plus: 
   instagram: 
   linkedin:  # full URL
   pinterest: 
-  reddit: "czarcraft"
+  reddit: "litetokens"
   soundcloud: 
   stack_exchange:  # full URL
   steam: 
   tumblr: 
-  twitter: "CzarcraftDLA"
+  twitter: "litetokens"
   wordpress: 
   youtube: 
   
   # Scripts
-  google_analytics: "UA-21065583-18" # tracking id, e.g. "UA-000000-01"
+  google_analytics: "UA-21065583-28" # tracking id, e.g. "UA-000000-01"
   disqus_shortname:
   
   # Localization strings
