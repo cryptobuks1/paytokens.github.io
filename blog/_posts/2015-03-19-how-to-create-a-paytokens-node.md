@@ -25,21 +25,28 @@ Build Litecoin:
 
 ```
 git clone https://github.com/litecoin-project/litecoin.git
+```
+
+```
 cd litecoin/src
+```
+
+```
 make -f makefile.unix USE_UPNP=1
+```
+
+```
 sudo cp ./litecoind /usr/bin
 ```
 
 Litecoind First Run:
 Start Litecoin by typing litecoind.  This will provide instructions to setup litecoin.conf in the directory ~/.litecoin.  Please be aware that directory paths should be the full path and exclude ~/ when entering paths later through configuration.  We may omit the full path throughout this writing.  A typical litecoin.conf should resemble the following for Paytokens Nodes:
 
-```
-rpcuser=litecoinrpc
-rpcpassword=PASSWORD
-server=1
-daemon=1
-txindex=1
-```
+>rpcuser=litecoinrpc
+>rpcpassword=PASSWORD
+>server=1
+>daemon=1
+>txindex=1
 
 Please replace PASSWORD with the password of your choosing.  
 

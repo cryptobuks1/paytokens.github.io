@@ -200,21 +200,30 @@ sudo apt-get install -y git autoconf autogen automake build-essential software-p
 
 <p><code>
 git clone https://github.com/litecoin-project/litecoin.git
+</code></p>
+
+<p><code>
 cd litecoin/src
+</code></p>
+
+<p><code>
 make -f makefile.unix USE_UPNP=1
+</code></p>
+
+<p><code>
 sudo cp ./litecoind /usr/bin
 </code></p>
 
 <p>Litecoind First Run:
 Start Litecoin by typing litecoind.  This will provide instructions to setup litecoin.conf in the directory ~/.litecoin.  Please be aware that directory paths should be the full path and exclude ~/ when entering paths later through configuration.  We may omit the full path throughout this writing.  A typical litecoin.conf should resemble the following for Paytokens Nodes:</p>
 
-<p><code>
-rpcuser=litecoinrpc
+<blockquote>
+  <p>rpcuser=litecoinrpc
 rpcpassword=PASSWORD
 server=1
 daemon=1
-txindex=1
-</code></p>
+txindex=1</p>
+</blockquote>
 
 <p>Please replace PASSWORD with the password of your choosing.</p>
 

@@ -5,7 +5,7 @@
     <atom:link href="https://czarcraft.co/feed.xml" rel="self" type="application/rss+xml"/>
     <link>https://czarcraft.co/</link>
     <description>The True Global Currency</description>
-    <pubDate>Fri, 20 Mar 2015 00:41:22 -0400</pubDate>
+    <pubDate>Fri, 20 Mar 2015 00:43:08 -0400</pubDate>
     
       <item>
         <title>How to Create a Paytokens Node</title>
@@ -33,21 +33,30 @@ sudo apt-get install -y git autoconf autogen automake build-essential software-p
 
 &lt;p&gt;&lt;code&gt;
 git clone https://github.com/litecoin-project/litecoin.git
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;
 cd litecoin/src
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;
 make -f makefile.unix USE_UPNP=1
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;
 sudo cp ./litecoind /usr/bin
 &lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;Litecoind First Run:
 Start Litecoin by typing litecoind.  This will provide instructions to setup litecoin.conf in the directory ~/.litecoin.  Please be aware that directory paths should be the full path and exclude ~/ when entering paths later through configuration.  We may omit the full path throughout this writing.  A typical litecoin.conf should resemble the following for Paytokens Nodes:&lt;/p&gt;
 
-&lt;p&gt;&lt;code&gt;
-rpcuser=litecoinrpc
+&lt;blockquote&gt;
+  &lt;p&gt;rpcuser=litecoinrpc
 rpcpassword=PASSWORD
 server=1
 daemon=1
-txindex=1
-&lt;/code&gt;&lt;/p&gt;
+txindex=1&lt;/p&gt;
+&lt;/blockquote&gt;
 
 &lt;p&gt;Please replace PASSWORD with the password of your choosing.&lt;/p&gt;
 
