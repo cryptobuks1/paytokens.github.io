@@ -14,113 +14,107 @@ sudo apt-get upgrade
 
 Next, install Litecoin dependencies:
 
-```
+{% highlight js %}
 sudo apt-get install -y git autoconf autogen automake build-essential software-properties-common libboost-all-dev libcurl4-openssl-dev libdb-dev libdb++-dev libgmp3-dev libminiupnpc-dev libmpfr-dev libssl-dev libcurl4-openssl-dev libjansson-dev pax-utils
-```
+{% endhighlight %}
 
 Build Litecoin:
 
-```
+{% highlight js %}
 git clone https://github.com/litecoin-project/litecoin.git
-```
-
-```
 cd litecoin/src
-```
-
-```
 make -f makefile.unix USE_UPNP=1
-```
-
-```
 sudo cp ./litecoind /usr/bin
-```
+{% endhighlight %}
 
 Litecoind First Run:
 Start Litecoin by typing litecoind.  This will provide instructions to setup litecoin.conf in the directory ~/.litecoin.  Please be aware that directory paths should be the full path and exclude ~/ when entering paths later through configuration.  We may omit the full path throughout this writing.  A typical litecoin.conf should resemble the following for Paytokens Nodes:
 
->rpcuser=litecoinrpc
->rpcpassword=PASSWORD
->server=1
->daemon=1
->txindex=1
+{% highlight js %}
+rpcuser=litecoinrpc
+rpcpassword=PASSWORD
+server=1
+daemon=1
+txindex=1
+{% endhighlight %}
 
 Please replace PASSWORD with the password of your choosing.  
 
 Start Litecoind to Rebuild Blockchain Index:
 
-```
+{% highlight js %}
 litecoind -reindex &
-```
+{% endhighlight %}
 
 Install Paytokens Dependencies:
 
-```
+{% highlight js %}
 sudo apt-get -y install runit software-properties-common python-software-properties git-core wget cx-freeze python3 python3-setuptools python3-dev python3-pip build-essential python3-sphinx python-virtualenv libsqlite3-dev python3-apsw python3-zmq ntp ssl-cert
-```
+{% endhighlight %}
 
 Install Payblock Dependencies:
 
-```
+{% highlight js %}
 sudo apt-get -y install python python-dev python-setuptools python-pip python-sphinx python-zmq libzmq3 libzmq3-dev libxml2-dev libxslt-dev zlib1g-dev libimage-exiftool-perl libevent-dev cython
 git clone https://github.com/Litecoin/Paytokensd_build.git
-```
+{% endhighlight %}
 
 Install MongoDB Version 2.6.4:
 
-```
+{% highlight js %}
 sudo apt-get -y remove mongodb mongodb-server
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10
 echo 'deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen' | sudo tee /etc/apt/sources.list.d/mongodb.list
 sudo apt-get update
 sudo apt-get -y install mongodb-org=2.6.4 mongodb-org-server=2.6.4 mongodb-org-shell=2.6.4 mongodb-org-mongos=2.6.4 mongodb-org-tools=2.6.4
-```
+{% endhighlight %}
 
 Pin this specific version of MongoDB to prevent automatic updates:
 
-```
+{% highlight js %}
 echo "mongodb-org hold" | sudo dpkg --set-selections
 echo "mongodb-org-server hold" | sudo dpkg --set-selections
 echo "mongodb-org-shell hold" | sudo dpkg --set-selections
 echo "mongodb-org-mongos hold" | sudo dpkg --set-selections
 echo "mongodb-org-tools hold" | sudo dpkg --set-selections
-```
+{% endhighlight %}
 
 Install Redis:
 
-```
+{% highlight js %}
 sudo apt-get -y install redis-server
-```
+{% endhighlight %}
+
 As a note, other versions of Redis may work just fine, that are just not tested within a Paytokens Environment
 
 Install Sqlite Utilities:
 
-```
+{% highlight js %}
 sudo apt-get -y install sqlite sqlite3 libleveldb-dev
-```
+{% endhighlight %}
 
 Install Node.js:
 
-```
+{% highlight js %}
 sudo apt-get -y remove nodejs npm gyp
 sudo add-apt-repository -y ppa:chris-lea/node.js
 sudo apt-get update
 sudo apt-get -y install nodejs
-```
+{% endhighlight %}
 
 Install Paytokensd:
 
-```
+{% highlight js %}
 cd ~/
 git clone https://github.com/Litecoin/Paytokensd.git
 cd Paytokensd
 sudo pip3 install -r pip-requirements.txt
 mkdir data
-```
+{% endhighlight %}
 
 Create Paytokensd Settings in "~/Paytokensd/settings.py":
 
-```
+{% highlight js %}
 [Default]
 data-dir=data
 litecoind-rpc-user=litecoinrpc
@@ -133,45 +127,34 @@ rpc-host=127.0.0.1
 blockchain-service-name=blockr
 blockchain-service-connect=https://ltc.blockr.io
 log-file=data/debug.log
-```
+{% endhighlight %}
 
 Please match the Litecoin RPC Password to litecoind-rpc-password and Paytokens RPC Password to rpc-password.
 
 Create a shell script to start Paytokens Server in "~/Paytokens.sh":
 
-```
+{% highlight js %}
 #!/bin/sh
 cd PATH/Paytokensd
 ./Paytokensd.py --config-file ./settings.py --data-dir data --blockchain-service-name insight --blockchain-service-connect http://66.172.12.59:4000 server
-```
+{% endhighlight %}
 
 Remember to replace PATH with the correct full path to Paytokensd installation directory.  Make executable: "chmod 750 ~/paytokens.sh"
 
-At this point, even if the Litecoin has synced, please refrain from started the Paytokens Server by use of the shell script Paytokens.sh.  As of this writing, no Paytokens System Init Scripts are available.  You may write them if you wish, use screen, or other methods to manage the Paytokens Servers.  Please note that if the server is started, it should be restarted later.
-
-Install Czarcore:
-
-```
-cd ~/
-git clone https://github.com/Litecoin/czarcore
-cd czarcore
-sudo npm install -g
-```
-
 Install Payblockd:
 
-```
+{% highlight js %}
 cd ~/
-git clone https://github.com/Litecoin/Paytokensd.git
+git clone https://github.com/paytokens/payblockd.git
 cd payblockd
 sudo pip2.7 install -r pip-requirements.txt
 mkdir data
-```
+{% endhighlight %}
 
 Configure Payblockd:
 "~/payblockd/settings.py":
 
-```
+{% highlight js %}
 [Default]
 data-dir=data
 paytokensd-rpc-user=paytokensrpc
@@ -180,28 +163,28 @@ paytokensd-rpc-port=7730
 blockchain-service-name=blockr
 blockchain-service-connect=https://ltc.blockr.io
 log-file=data/debug.log
-```
+{% endhighlight %}
 
 Create "payblock.sh":
 
-```
+{% highlight js %}
 #!/bin/sh
 cd /home/ceo/payblockd
 python2.7 payblockd.py --config-file settings.py --data-dir data --paytokensd-rpc-user paytokensrpc --paytokensd-rpc-password PASSWORD --rpc-host 127.0.0.1 --rpc-port 7800 --blockchain-service-name blockr --blockchain-service-connect https://ltc.blockr.io
-```
+{% endhighlight %}
 
 Update Pycoin:
 
-```
+{% highlight js %}
 cd ~/
 git clone https://github.com/Treefunder/pycoin.git
 sudo mv /usr/local/lib/python2.7/dis*/pycoin ~/pycoin-orig
 sudo mv ./pycoin /usr/local/lib/python2.7/dis*
-```
+{% endhighlight %}
 
 Install Paywallet:
 
-```
+{% highlight js %}
 cd ~/
 git clone https://github.com/Litecoin/paywallet.git
 cd paywallet
@@ -211,14 +194,14 @@ sudo bower install
 cd ..
 sudo npm install -g
 sudo grunt build
-```
+{% endhighlight %}
 
 Note that the paywallet repository includes the correct release of livenet.  Do not use the generated build as it will not work.  Instead, use the included build directory 'livenet' for the prebuilt distribution.
 
 Configure Paywallet:
 Edit ~/paywallet/livenet/paywallet.conf.json and change api.paytokens.co to localhost or the desired host.
 
-```
+{% highlight js %}
 {
   "servers": [ "https://localhost" ],
   "forceTestnet": false,
@@ -235,11 +218,11 @@ Edit ~/paywallet/livenet/paywallet.conf.json and change api.paytokens.co to loca
   },
   "autoBTCEscrowServer": ""
 }
-```
+{% endhighlight %}
 
 Install Nginx:
 
-```
+{% highlight js %}
 cd ~/
 sudo apt-get -y remove nginx-openresty
 sudo apt-get -y remove nginx
@@ -268,15 +251,15 @@ sudo apt-get -y install libxslt1.1 libgeoip1 geoip-database libpcre3
 sudo dpkg -i /tmp/nginx-openresty_1.7.2.1-1_amd64.deb
 sudo rm -f /etc/nginx/sites-enabled/*.dpkg-old /etc/nginx/sites-enabled/*.dpkg-dist
 sudo ln -sf /etc/sv/nginx /etc/service/
-```
+{% endhighlight %}
 
 Configure Nginx:
 
-```
+{% highlight js %}
 sudo nano /etc/nginx/sites*/*
-```
+{% endhighlight %}
 
-This will bring up an editor to modify Nginx Site Configuration.  Please adjust settings in these files to match desired output.
+This will bring up an editor to modify Nginx Site Configuration.  Please adjust settings in these files to match desired output.  In particular comment out 'etc var usr'.
 
 You may now start Paytokensd and payblockd then open a browser and begin utilizing the local instance of Paytokens.
 
