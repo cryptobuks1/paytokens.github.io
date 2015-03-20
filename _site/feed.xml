@@ -5,7 +5,7 @@
     <atom:link href="https://czarcraft.co/feed.xml" rel="self" type="application/rss+xml"/>
     <link>https://czarcraft.co/</link>
     <description>The True Global Currency</description>
-    <pubDate>Fri, 20 Mar 2015 00:28:50 -0400</pubDate>
+    <pubDate>Fri, 20 Mar 2015 00:32:03 -0400</pubDate>
     
       <item>
         <title>How to Create a Paytokens Node</title>
@@ -15,10 +15,11 @@
 
 &lt;p&gt;To get started, begin with a clean install, enter home directory and update repositories:&lt;/p&gt;
 
-&lt;p&gt;&lt;code&gt;
-sudo apt-get update  
-sudo apt-get upgrade  
-&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;```
+sudo apt-get update&lt;/p&gt;
+
+&lt;p&gt;sudo apt-get upgrade&lt;br /&gt;
+```&lt;/p&gt;
 
 &lt;p&gt;Next, install Litecoin dependencies:&lt;/p&gt;
 
