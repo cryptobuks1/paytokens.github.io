@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html class="no-js">
+
+  <head>
+<meta charset="utf-8">
+<title>How to Create a Paytokens Node | Litetokens</title>
+<meta name="description" content="~~How to Create a Paytokens Node~~">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+ 
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+ 
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+ 
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+ 
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="/css/main.css">
+	
+	<!--Favicon-->
+	<link rel="shortcut icon" href="/img/DLA.png" type="image/x-icon">
+	
+	<!-- Canonical -->
+	<link rel="canonical" href="https://czarcraft.co/blog/2015/03/19/how-to-create-a-paytokens-node.html">
+	
+	<!-- RSS -->
+	<link rel="alternate" type="application/atom+xml" title="Litetokens" href="https://czarcraft.co/feed.xml" />
+	
+	<!-- Font Awesome -->
+	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+	
+	<!-- Google Fonts -->
+	<link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,700italic,400italic" rel="stylesheet" type="text/css">
+	
+	<!-- Google Analytics -->
+	
+	<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-21065583-28', 'auto');
+	ga('send', 'pageview');
+	</script>
+	
+</head>
+
+
+  <body>
+    <header class="site-header">
+<div class="branding">
+
+<a href="/">
+<img class="avatar" src="/img/DLA.png" alt=""/>
+</a>
+
+<h1 class="site-title">
+<a href="/">Litetokens</a>
+</h1>
+</div>
+<nav class="site-nav">
+<ul>
+<li>
+<a class="page-link" href="/blog/">Blog</a>
+</li>
+<li>
+<a class="page-link" href="https://czarparty.co">Community</a>
+</li>
+
+
+
+
+
+
+<li>
+<a class="page-link" href="/governance/">Governance</a>
+</li>
+
+
+
+<li>
+<a class="page-link" href="/discover/">Discover</a>
+</li>
+
+
+
+
+
+<li>
+<a class="page-link" href="/features/">Features</a>
+</li>
+
+
+
+
+
+<li>
+<a class="page-link" href="/developers/">Developers</a>
+</li>
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li>
+	<a href="https://github.com/litetokens" title="Follow on GitHub">
+		<i class="fa fa-fw fa-github"></i>
+	</a>
+</li>
+
+
+
+
+
+
+
+
+
+
+
+<li>
+	<a href="https://www.reddit.com/r/litetokens" title="Follow on Reddit">
+		<i class="fa fa-fw fa-reddit"></i>
+	</a>
+</li>
+
+
+
+
+
+
+
+
+
+
+
+<li>
+	<a href="https://twitter.com/litetokens" title="Follow on Twitter">
+		<i class="fa fa-fw fa-twitter"></i>
+	</a>
+</li>
+
+
+
+
+
+</ul>
+</nav>
+</header>
+
+
+    <div class="content">
+      <article >
+
+  <header style="background-image: url('/')">
+    <h1 class="title">How to Create a Paytokens Node</h1>
+    
+    <p class="meta">
+    March 19, 2015
+    
+    </p>
+  </header>
+
+  <section class="post-content">
+    <p>~~How to Create a Paytokens Node~~</p>
+
+<p>Paytokens Servers are currently only supported on 64-Bit Ubuntu 14.04 LTS.  As of this writing, it is recommend to have a system with 32 GB of disk space accompanied by 4 GB of RAM and an Intel i5 equivalent or better.  A node targets 1,000 Users.  The install user must be a sudoer or have the appropriate access rights.  Core Paytokens installations are generally to be held by the home directory of the user.  These instructions may change and only serve as a guideline.</p>
+
+<p>To get started, begin with a clean install, enter home directory and update repositories:</p>
+
+<p><code>
+sudo apt-get update
+sudo apt-get upgrade
+</code></p>
+
+<p>Next, install Litecoin dependencies:</p>
+
+<p><code>
+sudo apt-get install -y git autoconf autogen automake build-essential software-properties-common libboost-all-dev libcurl4-openssl-dev libdb-dev libdb++-dev libgmp3-dev libminiupnpc-dev libmpfr-dev libssl-dev libcurl4-openssl-dev libjansson-dev pax-utils
+</code></p>
+
+<p>Build Litecoin:</p>
+
+<p><code>
+git clone https://github.com/litecoin-project/litecoin.git
+cd litecoin/src
+make -f makefile.unix USE_UPNP=1
+sudo cp ./litecoind /usr/bin
+</code></p>
+
+<p>Litecoind First Run:
+Start Litecoin by typing litecoind.  This will provide instructions to setup litecoin.conf in the directory ~/.litecoin.  Please be aware that directory paths should be the full path and exclude ~/ when entering paths later through configuration.  We may omit the full path throughout this writing.  A typical litecoin.conf should resemble the following for Paytokens Nodes:</p>
+
+<p><code>
+rpcuser=litecoinrpc
+rpcpassword=PASSWORD
+server=1
+daemon=1
+txindex=1
+</code></p>
+
+<p>Please replace PASSWORD with the password of your choosing.</p>
+
+<p>Start Litecoind to Rebuild Blockchain Index:</p>
+
+<p><code>
+litecoind -reindex &amp;
+</code></p>
+
+<p>Install Paytokens Dependencies:</p>
+
+<p><code>
+sudo apt-get -y install runit software-properties-common python-software-properties git-core wget cx-freeze python3 python3-setuptools python3-dev python3-pip build-essential python3-sphinx python-virtualenv libsqlite3-dev python3-apsw python3-zmq ntp ssl-cert
+</code></p>
+
+<p>Install Payblock Dependencies:
+<code>
+sudo apt-get -y install python python-dev python-setuptools python-pip python-sphinx python-zmq libzmq3 libzmq3-dev libxml2-dev libxslt-dev zlib1g-dev libimage-exiftool-perl libevent-dev cython
+git clone https://github.com/Litecoin/Paytokensd_build.git
+</code></p>
+
+<p>Install MongoDB Version 2.6.4:
+<code>
+sudo apt-get -y remove mongodb mongodb-server
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10
+echo 'deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen' | sudo tee /etc/apt/sources.list.d/mongodb.list
+sudo apt-get update
+sudo apt-get -y install mongodb-org=2.6.4 mongodb-org-server=2.6.4 mongodb-org-shell=2.6.4 mongodb-org-mongos=2.6.4 mongodb-org-tools=2.6.4
+</code></p>
+
+<p>Pin this specific version of MongoDB to prevent automatic updates:
+<code>
+echo "mongodb-org hold" | sudo dpkg --set-selections
+echo "mongodb-org-server hold" | sudo dpkg --set-selections
+echo "mongodb-org-shell hold" | sudo dpkg --set-selections
+echo "mongodb-org-mongos hold" | sudo dpkg --set-selections
+echo "mongodb-org-tools hold" | sudo dpkg --set-selections
+</code></p>
+
+<p>Install Redis:
+<code>
+sudo apt-get -y install redis-server
+</code>
+As a note, other versions of Redis may work just fine, that are just not tested within a Paytokens Environment</p>
+
+<p>Install Sqlite Utilities:
+<code>
+sudo apt-get -y install sqlite sqlite3 libleveldb-dev
+</code></p>
+
+<p>Install Node.js:
+<code>
+sudo apt-get -y remove nodejs npm gyp
+sudo add-apt-repository -y ppa:chris-lea/node.js
+sudo apt-get update
+sudo apt-get -y install nodejs
+</code></p>
+
+<p>Install Paytokensd:
+<code>
+cd ~/
+git clone https://github.com/Litecoin/Paytokensd.git
+cd Paytokensd
+sudo pip3 install -r pip-requirements.txt
+mkdir data
+</code></p>
+
+<p>Create Paytokensd Settings in “~/Paytokensd/settings.py”:
+<code>
+[Default]
+data-dir=data
+litecoind-rpc-user=litecoinrpc
+litecoind-rpc-password=PASSWORD
+litecoind-rpc-connect=127.0.0.1
+litecoind-rpc-port=8816
+rpc-user=paytokensrpc
+rpc-password=PASSWORD
+rpc-host=127.0.0.1
+blockchain-service-name=blockr
+blockchain-service-connect=https://ltc.blockr.io
+log-file=data/debug.log
+</code>
+Please match the Litecoin RPC Password to litecoind-rpc-password and Paytokens RPC Password to rpc-password.</p>
+
+<p>Create a shell script to start Paytokens Server in “~/Paytokens.sh”:
+<code>
+#!/bin/sh
+cd PATH/Paytokensd
+./Paytokensd.py --config-file ./settings.py --data-dir data --blockchain-service-name insight --blockchain-service-connect http://66.172.12.59:4000 server
+</code>
+Remember to replace PATH with the correct full path to Paytokensd installation directory.  Make executable: “chmod 750 ~/paytokens.sh”</p>
+
+<p>At this point, even if the Litecoin has synced, please refrain from started the Paytokens Server by use of the shell script Paytokens.sh.  As of this writing, no Paytokens System Init Scripts are available.  You may write them if you wish, use screen, or other methods to manage the Paytokens Servers.  Please note that if the server is started, it should be restarted later.</p>
+
+<p>Install Czarcore:
+<code>
+cd ~/
+git clone https://github.com/Litecoin/czarcore
+cd czarcore
+sudo npm install -g
+</code></p>
+
+<p>Install Payblockd:
+<code>
+cd ~/
+git clone https://github.com/Litecoin/Paytokensd.git
+cd payblockd
+sudo pip2.7 install -r pip-requirements.txt
+mkdir data
+</code></p>
+
+<p>Configure Payblockd:
+“~/payblockd/settings.py”:
+<code>
+[Default]
+data-dir=data
+paytokensd-rpc-user=paytokensrpc
+paytokensd-rpc-password=PASSWORD
+paytokensd-rpc-port=7730
+blockchain-service-name=blockr
+blockchain-service-connect=https://ltc.blockr.io
+log-file=data/debug.log
+</code></p>
+
+<p>Create “payblock.sh”:
+<code>
+#!/bin/sh
+cd /home/ceo/payblockd
+python2.7 payblockd.py --config-file settings.py --data-dir data --paytokensd-rpc-user paytokensrpc --paytokensd-rpc-password PASSWORD --rpc-host 127.0.0.1 --rpc-port 7800 --blockchain-service-name blockr --blockchain-service-connect https://ltc.blockr.io
+</code></p>
+
+<p>Update Pycoin:
+<code>
+cd ~/
+git clone https://github.com/Treefunder/pycoin.git
+sudo mv /usr/local/lib/python2.7/dis*/pycoin ~/pycoin-orig
+sudo mv ./pycoin /usr/local/lib/python2.7/dis*
+</code></p>
+
+<p>[Optional Unless Analytics is desired to be run locally]Install Czarsight:
+<code>
+git clone https://github.com/Litecoin/czarsight-api.git
+cd czarsight-api
+sudo npm install -g
+cd ~/
+git clone https://github.com/Litecoin/czarsight.git
+cd czarsight
+sudo npm install -g
+</code>
+Full configuration is not covered in this post.  API Server may be started by running “node insight.js” within czarsight-api directory and Front-end starts by using “npm start” from czarsight directory</p>
+
+<p>Install Paywallet:
+<code>
+cd ~/
+git clone https://github.com/Litecoin/paywallet.git
+cd paywallet
+sudo npm install -g grunt-cli bower
+cd src
+sudo bower install
+cd ..
+sudo npm install -g
+sudo grunt build
+</code>
+Note that the paywallet repository includes the correct release of livenet.  Do not use the generated build as it will not work.  Instead, use the included build directory ‘livenet’ for the prebuilt distribution.</p>
+
+<p>Configure Paywallet:
+Edit ~/paywallet/livenet/paywallet.conf.json and change api.paytokens.co to localhost or the desired host.
+<code>
+{
+  "servers": [ "https://localhost" ],
+  "forceTestnet": false,
+  "googleAnalyticsUA": "UA-21065583-20",
+  "googleAnalyticsUA-testnet": "UA-21065583-20",
+  "rollbarAccessToken": "39d23b5a512f4169c98fc922f0d1b121",
+  "disabledFeatures": [ ],
+  "restrictedAreas": {
+    "pages/betting.html": ["US"],
+    "pages/openbets.html": ["US"],
+    "pages/matchedbets.html": ["US"],
+    "pages/rps.html": ["US"],
+    "dividend": ["US"]
+  },
+  "autoBTCEscrowServer": ""
+}
+</code></p>
+
+<p>Install Nginx:
+<code>
+cd ~/
+sudo apt-get -y remove nginx-openresty
+sudo apt-get -y remove nginx
+sudo apt-get -y install make ruby1.9.1 ruby1.9.1-dev git-core libpcre3-dev libxslt1-dev libgd2-xpm-dev libgeoip-dev unzip zip build-essential libssl-dev
+sudo gem install fpm
+sudo rm -rf /tmp/openresty /tmp/ngx_openresty-* /tmp/nginx-openresty.tar.gz /tmp/nginx-openresty*.deb
+wget -O /tmp/nginx-openresty.tar.gz http://openresty.org/download/ngx_openresty-1.7.2.1.tar.gz
+sudo tar -C /tmp -zxvf /tmp/nginx-openresty.tar.gz
+sudo cd /tmp/ngx_openresty-1.7.2.1
+sudo ./configure --with-luajit --sbin-path=/usr/sbin/nginx --conf-path=/etc/nginx/nginx.conf --error-log-path=/var/log/nginx/error.log --http-client-body-temp-path=/var/lib/nginx/body --http-fastcgi-temp-path=/var/lib/nginx/fastcgi --http-log-path=/var/log/nginx/access.log --http-proxy-temp-path=/var/lib/nginx/proxy --http-scgi-temp-path=/var/lib/nginx/scgi --http-uwsgi-temp-path=/var/lib/nginx/uwsgi --lock-path=/var/lock/nginx.lock --pid-path=/var/run/nginx.pid --with-http_geoip_module --with-http_gzip_static_module --with-http_realip_module --with-http_ssl_module --with-http_sub_module --with-http_xslt_module --with-ipv6 --with-sha1=/usr/include/openssl --with-md5=/usr/include/openssl --with-http_stub_status_module --with-http_secure_link_module --with-http_sub_module
+sudo make
+sudo cd /tmp/ngx_openresty-1.7.2.1
+sudo make install DESTDIR=/tmp/openresty
+sudo mkdir -p /tmp/openresty/var/lib/nginx
+sudo cp -r ~/Paytokensd_build/dist/linux /tmp
+sudo install -m 0755 -D /tmp/linux/runit/nginx/run /tmp/openresty/etc/sv/nginx/run
+sudo install -m 0755 -D /tmp/linux/nginx/nginx.conf /tmp/openresty/etc/nginx/nginx.conf
+sudo install -m 0755 -D /tmp/linux/nginx/counterblock.conf /tmp/openresty/etc/nginx/sites-enabled/counterblock.conf
+sudo install -m 0755 -D /tmp/linux/nginx/counterblock_api.inc /tmp/openresty/etc/nginx/sites-enabled/counterblock_api.inc
+sudo install -m 0755 -D /tmp/linux/nginx/counterblock_api_cache.inc /tmp/openresty/etc/nginx/sites-enabled/counterblock_api_cache.inc
+sudo install -m 0755 -D /tmp/linux/nginx/counterblock_socketio.inc /tmp/openresty/etc/nginx/sites-enabled/counterblock_socketio.inc
+sudo install -m 0755 -D /tmp/linux/logrotate/nginx /tmp/openresty/etc/logrotate.d/nginx
+sudo cd /tmp
+sudo fpm -s dir -t deb -n nginx-openresty -v 1.7.2.1 --iteration 1 -C /tmp/openresty --description "openresty 1.7.2.1" --conflicts nginx --conflicts nginx-common -d libxslt1.1 -d libgeoip1 -d geoip-database -d libpcre3 --config-files /etc/nginx/nginx.conf --config-files /etc/nginx/sites-enabled/counterblock.conf --config-files /etc/nginx/fastcgi.conf.default --config-files /etc/nginx/win-utf --config-files /etc/nginx/fastcgi_params --config-files /etc/nginx/nginx.conf --config-files /etc/nginx/koi-win --config-files /etc/nginx/nginx.conf.default --config-files /etc/nginx/mime.types.default --config-files /etc/nginx/koi-utf --config-files /etc/nginx/uwsgi_params --config-files /etc/nginx/uwsgi_params.default --config-files /etc/nginx/fastcgi_params.default --config-files /etc/nginx/mime.types --config-files /etc/nginx/scgi_params.default --config-files /etc/nginx/scgi_params --config-files /etc/nginx/fastcgi.conf etc usr var
+sudo apt-get -y install libxslt1.1 libgeoip1 geoip-database libpcre3
+sudo dpkg -i /tmp/nginx-openresty_1.7.2.1-1_amd64.deb
+sudo rm -f /etc/nginx/sites-enabled/*.dpkg-old /etc/nginx/sites-enabled/*.dpkg-dist
+sudo ln -sf /etc/sv/nginx /etc/service/
+</code></p>
+
+<p>Configure Nginx:
+<code>
+sudo nano /etc/nginx/sites*/*
+</code>
+This will bring up an editor to modify Nginx Site Configuration.  Please adjust settings in these files to match desired output.</p>
+
+<p>You may now start Paytokensd and payblockd then open a browser and begin utilizing the local instance of Paytokens.</p>
+
+
+  </section>
+  
+</article>
+
+<!-- Disqus -->
+
+    </div>
+
+    
+<footer class="site-footer">
+	<p class="text">© <a href="https://treefunder.co">Treefunder Incorporated</a>
+</p>
+</footer>
+
+  </body>
+  
+</html>
