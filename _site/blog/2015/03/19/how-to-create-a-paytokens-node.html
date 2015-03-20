@@ -4,7 +4,7 @@
   <head>
 <meta charset="utf-8">
 <title>How to Create a Paytokens Node | Paytokens</title>
-<meta name="description" content="Paytokens Servers are currently only supported on 64-Bit Ubuntu 14.04 LTS.  As of this writing, it is recommend to have a system with 32 GB of disk space acc...">
+<meta name="description" content="Paytokens Servers are currently only supported on 64-Bit Ubuntu 14.04 LTS.  As of this writing, it is recommend to have a system with at least 32 GB of disk ...">
 <meta name="viewport" content="width=device-width, initial-scale=1">
  
 <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
@@ -178,7 +178,7 @@
   </header>
 
   <section class="post-content">
-    <p>Paytokens Servers are currently only supported on 64-Bit Ubuntu 14.04 LTS.  As of this writing, it is recommend to have a system with 32 GB of disk space accompanied by 4 GB of RAM and an Intel i5 equivalent or better.  A node targets 1,000 Users.  The install user must be a sudoer or have the appropriate access rights.  Core Paytokens installations are generally to be held by the home directory of the user.  These instructions may change and only serve as a guideline.</p>
+    <p>Paytokens Servers are currently only supported on 64-Bit Ubuntu 14.04 LTS.  As of this writing, it is recommend to have a system with at least 32 GB of disk space accompanied by 4 GB of RAM and an Intel i5 equivalent or better.  A node targets 1,000 Users.  The install user must be a sudoer or have the appropriate access rights.  Core Paytokens installations are generally to be held by the home directory of the user.  These instructions may change and only serve as a guideline.</p>
 
 <p>To get started, begin with a clean install, enter home directory and update repositories:</p>
 
@@ -218,7 +218,7 @@ Start Litecoin by typing litecoind.  This will provide instructions to setup lit
 <p>Install Payblock Dependencies:</p>
 
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">sudo</span> <span class="nx">apt</span><span class="o">-</span><span class="nx">get</span> <span class="o">-</span><span class="nx">y</span> <span class="nx">install</span> <span class="nx">python</span> <span class="nx">python</span><span class="o">-</span><span class="nx">dev</span> <span class="nx">python</span><span class="o">-</span><span class="nx">setuptools</span> <span class="nx">python</span><span class="o">-</span><span class="nx">pip</span> <span class="nx">python</span><span class="o">-</span><span class="nx">sphinx</span> <span class="nx">python</span><span class="o">-</span><span class="nx">zmq</span> <span class="nx">libzmq3</span> <span class="nx">libzmq3</span><span class="o">-</span><span class="nx">dev</span> <span class="nx">libxml2</span><span class="o">-</span><span class="nx">dev</span> <span class="nx">libxslt</span><span class="o">-</span><span class="nx">dev</span> <span class="nx">zlib1g</span><span class="o">-</span><span class="nx">dev</span> <span class="nx">libimage</span><span class="o">-</span><span class="nx">exiftool</span><span class="o">-</span><span class="nx">perl</span> <span class="nx">libevent</span><span class="o">-</span><span class="nx">dev</span> <span class="nx">cython</span>
-<span class="nx">git</span> <span class="nx">clone</span> <span class="nx">https</span><span class="o">:</span><span class="c1">//github.com/Litecoin/Paytokensd_build.git</span></code></pre></div>
+<span class="nx">git</span> <span class="nx">clone</span> <span class="nx">https</span><span class="o">:</span><span class="c1">//github.com/czarparty/czarpartyd_build.git paytokensd_build</span></code></pre></div>
 
 <p>Install MongoDB Version 2.6.4:</p>
 
@@ -256,12 +256,12 @@ Start Litecoin by typing litecoind.  This will provide instructions to setup lit
 <p>Install Paytokensd:</p>
 
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">cd</span> <span class="o">~</span><span class="err">/</span>
-<span class="nx">git</span> <span class="nx">clone</span> <span class="nx">https</span><span class="o">:</span><span class="c1">//github.com/Litecoin/Paytokensd.git</span>
-<span class="nx">cd</span> <span class="nx">Paytokensd</span>
+<span class="nx">git</span> <span class="nx">clone</span> <span class="nx">https</span><span class="o">:</span><span class="c1">//github.com/paytokens/paytokensd.git</span>
+<span class="nx">cd</span> <span class="nx">paytokensd</span>
 <span class="nx">sudo</span> <span class="nx">pip3</span> <span class="nx">install</span> <span class="o">-</span><span class="nx">r</span> <span class="nx">pip</span><span class="o">-</span><span class="nx">requirements</span><span class="p">.</span><span class="nx">txt</span>
 <span class="nx">mkdir</span> <span class="nx">data</span></code></pre></div>
 
-<p>Create Paytokensd Settings in “~/Paytokensd/settings.py”:</p>
+<p>Create Paytokensd Settings in “~/paytokensd/settings.py”:</p>
 
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="p">[</span><span class="nx">Default</span><span class="p">]</span>
 <span class="nx">data</span><span class="o">-</span><span class="nx">dir</span><span class="o">=</span><span class="nx">data</span>
@@ -278,11 +278,11 @@ Start Litecoin by typing litecoind.  This will provide instructions to setup lit
 
 <p>Please match the Litecoin RPC Password to litecoind-rpc-password and Paytokens RPC Password to rpc-password.</p>
 
-<p>Create a shell script to start Paytokens Server in “~/Paytokens.sh”:</p>
+<p>Create a shell script to start Paytokens Server in “~/paytokens.sh”:</p>
 
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="err">#</span><span class="o">!</span><span class="err">/bin/sh</span>
-<span class="nx">cd</span> <span class="nx">PATH</span><span class="o">/</span><span class="nx">Paytokensd</span>
-<span class="p">.</span><span class="o">/</span><span class="nx">Paytokensd</span><span class="p">.</span><span class="nx">py</span> <span class="o">--</span><span class="nx">config</span><span class="o">-</span><span class="nx">file</span> <span class="p">.</span><span class="o">/</span><span class="nx">settings</span><span class="p">.</span><span class="nx">py</span> <span class="o">--</span><span class="nx">data</span><span class="o">-</span><span class="nx">dir</span> <span class="nx">data</span> <span class="o">--</span><span class="nx">blockchain</span><span class="o">-</span><span class="nx">service</span><span class="o">-</span><span class="nx">name</span> <span class="nx">insight</span> <span class="o">--</span><span class="nx">blockchain</span><span class="o">-</span><span class="nx">service</span><span class="o">-</span><span class="nx">connect</span> <span class="nx">http</span><span class="o">:</span><span class="c1">//66.172.12.59:4000 server</span></code></pre></div>
+<span class="nx">cd</span> <span class="nx">PATH</span><span class="o">/</span><span class="nx">paytokensd</span>
+<span class="p">.</span><span class="o">/</span><span class="nx">paytokensd</span><span class="p">.</span><span class="nx">py</span> <span class="o">--</span><span class="nx">config</span><span class="o">-</span><span class="nx">file</span> <span class="p">.</span><span class="o">/</span><span class="nx">settings</span><span class="p">.</span><span class="nx">py</span> <span class="o">--</span><span class="nx">data</span><span class="o">-</span><span class="nx">dir</span> <span class="nx">data</span> <span class="o">--</span><span class="nx">blockchain</span><span class="o">-</span><span class="nx">service</span><span class="o">-</span><span class="nx">name</span> <span class="nx">blockr</span> <span class="o">--</span><span class="nx">blockchain</span><span class="o">-</span><span class="nx">service</span><span class="o">-</span><span class="nx">connect</span> <span class="nx">https</span><span class="o">:</span><span class="c1">//ltc.blockr.io</span></code></pre></div>
 
 <p>Remember to replace PATH with the correct full path to Paytokensd installation directory.  Make executable: “chmod 750 ~/paytokens.sh”</p>
 
@@ -312,24 +312,12 @@ Start Litecoin by typing litecoind.  This will provide instructions to setup lit
 <span class="nx">cd</span> <span class="o">/</span><span class="nx">home</span><span class="o">/</span><span class="nx">ceo</span><span class="o">/</span><span class="nx">payblockd</span>
 <span class="nx">python2</span><span class="p">.</span><span class="mi">7</span> <span class="nx">payblockd</span><span class="p">.</span><span class="nx">py</span> <span class="o">--</span><span class="nx">config</span><span class="o">-</span><span class="nx">file</span> <span class="nx">settings</span><span class="p">.</span><span class="nx">py</span> <span class="o">--</span><span class="nx">data</span><span class="o">-</span><span class="nx">dir</span> <span class="nx">data</span> <span class="o">--</span><span class="nx">paytokensd</span><span class="o">-</span><span class="nx">rpc</span><span class="o">-</span><span class="nx">user</span> <span class="nx">paytokensrpc</span> <span class="o">--</span><span class="nx">paytokensd</span><span class="o">-</span><span class="nx">rpc</span><span class="o">-</span><span class="nx">password</span> <span class="nx">PASSWORD</span> <span class="o">--</span><span class="nx">rpc</span><span class="o">-</span><span class="nx">host</span> <span class="mf">127.0</span><span class="p">.</span><span class="mf">0.1</span> <span class="o">--</span><span class="nx">rpc</span><span class="o">-</span><span class="nx">port</span> <span class="mi">7800</span> <span class="o">--</span><span class="nx">blockchain</span><span class="o">-</span><span class="nx">service</span><span class="o">-</span><span class="nx">name</span> <span class="nx">blockr</span> <span class="o">--</span><span class="nx">blockchain</span><span class="o">-</span><span class="nx">service</span><span class="o">-</span><span class="nx">connect</span> <span class="nx">https</span><span class="o">:</span><span class="c1">//ltc.blockr.io</span></code></pre></div>
 
-<p>Update Pycoin:</p>
-
-<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">cd</span> <span class="o">~</span><span class="err">/</span>
-<span class="nx">git</span> <span class="nx">clone</span> <span class="nx">https</span><span class="o">:</span><span class="c1">//github.com/Treefunder/pycoin.git</span>
-<span class="nx">sudo</span> <span class="nx">mv</span> <span class="o">/</span><span class="nx">usr</span><span class="o">/</span><span class="nx">local</span><span class="o">/</span><span class="nx">lib</span><span class="o">/</span><span class="nx">python2</span><span class="p">.</span><span class="mi">7</span><span class="o">/</span><span class="nx">dis</span><span class="o">*</span><span class="err">/pycoin ~/pycoin-orig</span>
-<span class="nx">sudo</span> <span class="nx">mv</span> <span class="p">.</span><span class="o">/</span><span class="nx">pycoin</span> <span class="o">/</span><span class="nx">usr</span><span class="o">/</span><span class="nx">local</span><span class="o">/</span><span class="nx">lib</span><span class="o">/</span><span class="nx">python2</span><span class="p">.</span><span class="mi">7</span><span class="o">/</span><span class="nx">dis</span><span class="o">*</span></code></pre></div>
-
 <p>Install Paywallet:</p>
 
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">cd</span> <span class="o">~</span><span class="err">/</span>
-<span class="nx">git</span> <span class="nx">clone</span> <span class="nx">https</span><span class="o">:</span><span class="c1">//github.com/Litecoin/paywallet.git</span>
+<span class="nx">git</span> <span class="nx">clone</span> <span class="nx">https</span><span class="o">:</span><span class="c1">//github.com/paytokens/paywallet.git</span>
 <span class="nx">cd</span> <span class="nx">paywallet</span>
-<span class="nx">sudo</span> <span class="nx">npm</span> <span class="nx">install</span> <span class="o">-</span><span class="nx">g</span> <span class="nx">grunt</span><span class="o">-</span><span class="nx">cli</span> <span class="nx">bower</span>
-<span class="nx">cd</span> <span class="nx">src</span>
-<span class="nx">sudo</span> <span class="nx">bower</span> <span class="nx">install</span>
-<span class="nx">cd</span> <span class="p">..</span>
-<span class="nx">sudo</span> <span class="nx">npm</span> <span class="nx">install</span> <span class="o">-</span><span class="nx">g</span>
-<span class="nx">sudo</span> <span class="nx">grunt</span> <span class="nx">build</span></code></pre></div>
+<span class="nx">git</span> <span class="nx">checkout</span> <span class="nx">evolve</span></code></pre></div>
 
 <p>Note that the paywallet repository includes the correct release of livenet.  Do not use the generated build as it will not work.  Instead, use the included build directory ‘livenet’ for the prebuilt distribution.</p>
 
@@ -369,7 +357,7 @@ Edit ~/paywallet/livenet/paywallet.conf.json and change api.paytokens.co to loca
 <span class="nx">sudo</span> <span class="nx">cd</span> <span class="o">/</span><span class="nx">tmp</span><span class="o">/</span><span class="nx">ngx_openresty</span><span class="o">-</span><span class="mf">1.7</span><span class="p">.</span><span class="mf">2.1</span>
 <span class="nx">sudo</span> <span class="nx">make</span> <span class="nx">install</span> <span class="nx">DESTDIR</span><span class="o">=</span><span class="err">/tmp/openresty</span>
 <span class="nx">sudo</span> <span class="nx">mkdir</span> <span class="o">-</span><span class="nx">p</span> <span class="o">/</span><span class="nx">tmp</span><span class="o">/</span><span class="nx">openresty</span><span class="o">/</span><span class="kd">var</span><span class="err">/lib/nginx</span>
-<span class="nx">sudo</span> <span class="nx">cp</span> <span class="o">-</span><span class="nx">r</span> <span class="o">~</span><span class="err">/Paytokensd_build/dist/linux /tmp</span>
+<span class="nx">sudo</span> <span class="nx">cp</span> <span class="o">-</span><span class="nx">r</span> <span class="o">~</span><span class="err">/paytokensd_build/dist/linux /tmp</span>
 <span class="nx">sudo</span> <span class="nx">install</span> <span class="o">-</span><span class="nx">m</span> <span class="mi">0755</span> <span class="o">-</span><span class="nx">D</span> <span class="o">/</span><span class="nx">tmp</span><span class="o">/</span><span class="nx">linux</span><span class="o">/</span><span class="nx">runit</span><span class="o">/</span><span class="nx">nginx</span><span class="o">/</span><span class="nx">run</span> <span class="o">/</span><span class="nx">tmp</span><span class="o">/</span><span class="nx">openresty</span><span class="o">/</span><span class="nx">etc</span><span class="o">/</span><span class="nx">sv</span><span class="o">/</span><span class="nx">nginx</span><span class="o">/</span><span class="nx">run</span>
 <span class="nx">sudo</span> <span class="nx">install</span> <span class="o">-</span><span class="nx">m</span> <span class="mi">0755</span> <span class="o">-</span><span class="nx">D</span> <span class="o">/</span><span class="nx">tmp</span><span class="o">/</span><span class="nx">linux</span><span class="o">/</span><span class="nx">nginx</span><span class="o">/</span><span class="nx">nginx</span><span class="p">.</span><span class="nx">conf</span> <span class="o">/</span><span class="nx">tmp</span><span class="o">/</span><span class="nx">openresty</span><span class="o">/</span><span class="nx">etc</span><span class="o">/</span><span class="nx">nginx</span><span class="o">/</span><span class="nx">nginx</span><span class="p">.</span><span class="nx">conf</span>
 <span class="nx">sudo</span> <span class="nx">install</span> <span class="o">-</span><span class="nx">m</span> <span class="mi">0755</span> <span class="o">-</span><span class="nx">D</span> <span class="o">/</span><span class="nx">tmp</span><span class="o">/</span><span class="nx">linux</span><span class="o">/</span><span class="nx">nginx</span><span class="o">/</span><span class="nx">counterblock</span><span class="p">.</span><span class="nx">conf</span> <span class="o">/</span><span class="nx">tmp</span><span class="o">/</span><span class="nx">openresty</span><span class="o">/</span><span class="nx">etc</span><span class="o">/</span><span class="nx">nginx</span><span class="o">/</span><span class="nx">sites</span><span class="o">-</span><span class="nx">enabled</span><span class="o">/</span><span class="nx">counterblock</span><span class="p">.</span><span class="nx">conf</span>

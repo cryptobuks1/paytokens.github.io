@@ -3,7 +3,7 @@ layout: post
 title: How to Create a Paytokens Node
 ---
 
-Paytokens Servers are currently only supported on 64-Bit Ubuntu 14.04 LTS.  As of this writing, it is recommend to have a system with 32 GB of disk space accompanied by 4 GB of RAM and an Intel i5 equivalent or better.  A node targets 1,000 Users.  The install user must be a sudoer or have the appropriate access rights.  Core Paytokens installations are generally to be held by the home directory of the user.  These instructions may change and only serve as a guideline.
+Paytokens Servers are currently only supported on 64-Bit Ubuntu 14.04 LTS.  As of this writing, it is recommend to have a system with at least 32 GB of disk space accompanied by 4 GB of RAM and an Intel i5 equivalent or better.  A node targets 1,000 Users.  The install user must be a sudoer or have the appropriate access rights.  Core Paytokens installations are generally to be held by the home directory of the user.  These instructions may change and only serve as a guideline.
 
 To get started, begin with a clean install, enter home directory and update repositories:
 
@@ -56,7 +56,7 @@ Install Payblock Dependencies:
 
 {% highlight js %}
 sudo apt-get -y install python python-dev python-setuptools python-pip python-sphinx python-zmq libzmq3 libzmq3-dev libxml2-dev libxslt-dev zlib1g-dev libimage-exiftool-perl libevent-dev cython
-git clone https://github.com/Litecoin/Paytokensd_build.git
+git clone https://github.com/czarparty/czarpartyd_build.git paytokensd_build
 {% endhighlight %}
 
 Install MongoDB Version 2.6.4:
@@ -106,13 +106,13 @@ Install Paytokensd:
 
 {% highlight js %}
 cd ~/
-git clone https://github.com/Litecoin/Paytokensd.git
-cd Paytokensd
+git clone https://github.com/paytokens/paytokensd.git
+cd paytokensd
 sudo pip3 install -r pip-requirements.txt
 mkdir data
 {% endhighlight %}
 
-Create Paytokensd Settings in "~/Paytokensd/settings.py":
+Create Paytokensd Settings in "~/paytokensd/settings.py":
 
 {% highlight js %}
 [Default]
@@ -131,12 +131,12 @@ log-file=data/debug.log
 
 Please match the Litecoin RPC Password to litecoind-rpc-password and Paytokens RPC Password to rpc-password.
 
-Create a shell script to start Paytokens Server in "~/Paytokens.sh":
+Create a shell script to start Paytokens Server in "~/paytokens.sh":
 
 {% highlight js %}
 #!/bin/sh
-cd PATH/Paytokensd
-./Paytokensd.py --config-file ./settings.py --data-dir data --blockchain-service-name insight --blockchain-service-connect http://66.172.12.59:4000 server
+cd PATH/paytokensd
+./paytokensd.py --config-file ./settings.py --data-dir data --blockchain-service-name blockr --blockchain-service-connect https://ltc.blockr.io
 {% endhighlight %}
 
 Remember to replace PATH with the correct full path to Paytokensd installation directory.  Make executable: "chmod 750 ~/paytokens.sh"
@@ -173,27 +173,13 @@ cd /home/ceo/payblockd
 python2.7 payblockd.py --config-file settings.py --data-dir data --paytokensd-rpc-user paytokensrpc --paytokensd-rpc-password PASSWORD --rpc-host 127.0.0.1 --rpc-port 7800 --blockchain-service-name blockr --blockchain-service-connect https://ltc.blockr.io
 {% endhighlight %}
 
-Update Pycoin:
-
-{% highlight js %}
-cd ~/
-git clone https://github.com/Treefunder/pycoin.git
-sudo mv /usr/local/lib/python2.7/dis*/pycoin ~/pycoin-orig
-sudo mv ./pycoin /usr/local/lib/python2.7/dis*
-{% endhighlight %}
-
 Install Paywallet:
 
 {% highlight js %}
 cd ~/
-git clone https://github.com/Litecoin/paywallet.git
+git clone https://github.com/paytokens/paywallet.git
 cd paywallet
-sudo npm install -g grunt-cli bower
-cd src
-sudo bower install
-cd ..
-sudo npm install -g
-sudo grunt build
+git checkout evolve
 {% endhighlight %}
 
 Note that the paywallet repository includes the correct release of livenet.  Do not use the generated build as it will not work.  Instead, use the included build directory 'livenet' for the prebuilt distribution.
@@ -237,7 +223,7 @@ sudo make
 sudo cd /tmp/ngx_openresty-1.7.2.1
 sudo make install DESTDIR=/tmp/openresty
 sudo mkdir -p /tmp/openresty/var/lib/nginx
-sudo cp -r ~/Paytokensd_build/dist/linux /tmp
+sudo cp -r ~/paytokensd_build/dist/linux /tmp
 sudo install -m 0755 -D /tmp/linux/runit/nginx/run /tmp/openresty/etc/sv/nginx/run
 sudo install -m 0755 -D /tmp/linux/nginx/nginx.conf /tmp/openresty/etc/nginx/nginx.conf
 sudo install -m 0755 -D /tmp/linux/nginx/counterblock.conf /tmp/openresty/etc/nginx/sites-enabled/counterblock.conf
