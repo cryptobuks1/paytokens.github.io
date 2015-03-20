@@ -9,7 +9,9 @@ To get started, begin with a clean install, enter home directory and update repo
 
 ```
 sudo apt-get update
+```
 
+```
 sudo apt-get upgrade
 ```
 
