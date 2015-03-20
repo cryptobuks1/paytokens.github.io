@@ -8,9 +8,8 @@ Paytokens Servers are currently only supported on 64-Bit Ubuntu 14.04 LTS.  As o
 To get started, begin with a clean install, enter home directory and update repositories:
 
 ```
-sudo apt-get update  
-
-sudo apt-get upgrade  
+sudo apt-get update
+sudo apt-get upgrade
 ```
 
 Next, install Litecoin dependencies:
