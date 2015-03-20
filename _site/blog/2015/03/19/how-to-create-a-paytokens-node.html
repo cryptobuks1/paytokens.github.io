@@ -182,164 +182,164 @@
 
 <p>To get started, begin with a clean install, enter home directory and update repositories:</p>
 
-<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">sudo</span> <span class="nx">apt</span><span class="o">-</span><span class="nx">get</span> <span class="nx">update</span>
-<span class="nx">sudo</span> <span class="nx">apt</span><span class="o">-</span><span class="nx">get</span> <span class="nx">upgrade</span></code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">sudo apt-get update
+sudo apt-get upgrade</code></pre></div>
 
 <p>Next, install Litecoin dependencies:</p>
 
-<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">sudo</span> <span class="nx">apt</span><span class="o">-</span><span class="nx">get</span> <span class="nx">install</span> <span class="o">-</span><span class="nx">y</span> <span class="nx">git</span> <span class="nx">autoconf</span> <span class="nx">autogen</span> <span class="nx">automake</span> <span class="nx">build</span><span class="o">-</span><span class="nx">essential</span> <span class="nx">software</span><span class="o">-</span><span class="nx">properties</span><span class="o">-</span><span class="nx">common</span> <span class="nx">libboost</span><span class="o">-</span><span class="nx">all</span><span class="o">-</span><span class="nx">dev</span> <span class="nx">libcurl4</span><span class="o">-</span><span class="nx">openssl</span><span class="o">-</span><span class="nx">dev</span> <span class="nx">libdb</span><span class="o">-</span><span class="nx">dev</span> <span class="nx">libdb</span><span class="o">++-</span><span class="nx">dev</span> <span class="nx">libgmp3</span><span class="o">-</span><span class="nx">dev</span> <span class="nx">libminiupnpc</span><span class="o">-</span><span class="nx">dev</span> <span class="nx">libmpfr</span><span class="o">-</span><span class="nx">dev</span> <span class="nx">libssl</span><span class="o">-</span><span class="nx">dev</span> <span class="nx">libcurl4</span><span class="o">-</span><span class="nx">openssl</span><span class="o">-</span><span class="nx">dev</span> <span class="nx">libjansson</span><span class="o">-</span><span class="nx">dev</span> <span class="nx">pax</span><span class="o">-</span><span class="nx">utils</span></code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">sudo apt-get install -y git autoconf autogen automake build-essential software-properties-common libboost-all-dev libcurl4-openssl-dev libdb-dev libdb++-dev libgmp3-dev libminiupnpc-dev libmpfr-dev libssl-dev libcurl4-openssl-dev libjansson-dev pax-utils</code></pre></div>
 
 <p>Build Litecoin:</p>
 
-<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">git</span> <span class="nx">clone</span> <span class="nx">https</span><span class="o">:</span><span class="c1">//github.com/litecoin-project/litecoin.git</span>
-<span class="nx">cd</span> <span class="nx">litecoin</span><span class="o">/</span><span class="nx">src</span>
-<span class="nx">make</span> <span class="o">-</span><span class="nx">f</span> <span class="nx">makefile</span><span class="p">.</span><span class="nx">unix</span> <span class="nx">USE_UPNP</span><span class="o">=</span><span class="mi">1</span>
-<span class="nx">sudo</span> <span class="nx">cp</span> <span class="p">.</span><span class="o">/</span><span class="nx">litecoind</span> <span class="o">/</span><span class="nx">usr</span><span class="o">/</span><span class="nx">bin</span></code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">git clone https://github.com/litecoin-project/litecoin.git
+<span class="nb">cd </span>litecoin/src
+make -f makefile.unix <span class="nv">USE_UPNP</span><span class="o">=</span>1
+sudo cp ./litecoind /usr/bin</code></pre></div>
 
 <p>Litecoind First Run:
 Start Litecoin by typing litecoind.  This will provide instructions to setup litecoin.conf in the directory ~/.litecoin.  Please be aware that directory paths should be the full path and exclude ~/ when entering paths later through configuration.  We may omit the full path throughout this writing.  A typical litecoin.conf should resemble the following for Paytokens Nodes:</p>
 
-<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">rpcuser</span><span class="o">=</span><span class="nx">litecoinrpc</span>
-<span class="nx">rpcpassword</span><span class="o">=</span><span class="nx">PASSWORD</span>
-<span class="nx">server</span><span class="o">=</span><span class="mi">1</span>
-<span class="nx">daemon</span><span class="o">=</span><span class="mi">1</span>
-<span class="nx">txindex</span><span class="o">=</span><span class="mi">1</span></code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">rpcuser</span><span class="o">=</span>litecoinrpc
+<span class="nv">rpcpassword</span><span class="o">=</span>PASSWORD
+<span class="nv">server</span><span class="o">=</span>1
+<span class="nv">daemon</span><span class="o">=</span>1
+<span class="nv">txindex</span><span class="o">=</span>1</code></pre></div>
 
 <p>Please replace PASSWORD with the password of your choosing.</p>
 
 <p>Start Litecoind to Rebuild Blockchain Index:</p>
 
-<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">litecoind</span> <span class="o">-</span><span class="nx">reindex</span> <span class="o">&amp;</span></code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">litecoind -reindex <span class="p">&amp;</span></code></pre></div>
 
 <p>Install Paytokens Dependencies:</p>
 
-<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">sudo</span> <span class="nx">apt</span><span class="o">-</span><span class="nx">get</span> <span class="o">-</span><span class="nx">y</span> <span class="nx">install</span> <span class="nx">runit</span> <span class="nx">software</span><span class="o">-</span><span class="nx">properties</span><span class="o">-</span><span class="nx">common</span> <span class="nx">python</span><span class="o">-</span><span class="nx">software</span><span class="o">-</span><span class="nx">properties</span> <span class="nx">git</span><span class="o">-</span><span class="nx">core</span> <span class="nx">wget</span> <span class="nx">cx</span><span class="o">-</span><span class="nx">freeze</span> <span class="nx">python3</span> <span class="nx">python3</span><span class="o">-</span><span class="nx">setuptools</span> <span class="nx">python3</span><span class="o">-</span><span class="nx">dev</span> <span class="nx">python3</span><span class="o">-</span><span class="nx">pip</span> <span class="nx">build</span><span class="o">-</span><span class="nx">essential</span> <span class="nx">python3</span><span class="o">-</span><span class="nx">sphinx</span> <span class="nx">python</span><span class="o">-</span><span class="nx">virtualenv</span> <span class="nx">libsqlite3</span><span class="o">-</span><span class="nx">dev</span> <span class="nx">python3</span><span class="o">-</span><span class="nx">apsw</span> <span class="nx">python3</span><span class="o">-</span><span class="nx">zmq</span> <span class="nx">ntp</span> <span class="nx">ssl</span><span class="o">-</span><span class="nx">cert</span></code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">sudo apt-get -y install runit software-properties-common python-software-properties git-core wget cx-freeze python3 python3-setuptools python3-dev python3-pip build-essential python3-sphinx python-virtualenv libsqlite3-dev python3-apsw python3-zmq ntp ssl-cert</code></pre></div>
 
 <p>Install Payblock Dependencies:</p>
 
-<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">sudo</span> <span class="nx">apt</span><span class="o">-</span><span class="nx">get</span> <span class="o">-</span><span class="nx">y</span> <span class="nx">install</span> <span class="nx">python</span> <span class="nx">python</span><span class="o">-</span><span class="nx">dev</span> <span class="nx">python</span><span class="o">-</span><span class="nx">setuptools</span> <span class="nx">python</span><span class="o">-</span><span class="nx">pip</span> <span class="nx">python</span><span class="o">-</span><span class="nx">sphinx</span> <span class="nx">python</span><span class="o">-</span><span class="nx">zmq</span> <span class="nx">libzmq3</span> <span class="nx">libzmq3</span><span class="o">-</span><span class="nx">dev</span> <span class="nx">libxml2</span><span class="o">-</span><span class="nx">dev</span> <span class="nx">libxslt</span><span class="o">-</span><span class="nx">dev</span> <span class="nx">zlib1g</span><span class="o">-</span><span class="nx">dev</span> <span class="nx">libimage</span><span class="o">-</span><span class="nx">exiftool</span><span class="o">-</span><span class="nx">perl</span> <span class="nx">libevent</span><span class="o">-</span><span class="nx">dev</span> <span class="nx">cython</span>
-<span class="nx">git</span> <span class="nx">clone</span> <span class="nx">https</span><span class="o">:</span><span class="c1">//github.com/czarparty/czarpartyd_build.git paytokensd_build</span></code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">sudo apt-get -y install python python-dev python-setuptools python-pip python-sphinx python-zmq libzmq3 libzmq3-dev libxml2-dev libxslt-dev zlib1g-dev libimage-exiftool-perl libevent-dev cython
+git clone https://github.com/czarparty/czarpartyd_build.git paytokensd_build</code></pre></div>
 
 <p>Install MongoDB Version 2.6.4:</p>
 
-<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">sudo</span> <span class="nx">apt</span><span class="o">-</span><span class="nx">get</span> <span class="o">-</span><span class="nx">y</span> <span class="nx">remove</span> <span class="nx">mongodb</span> <span class="nx">mongodb</span><span class="o">-</span><span class="nx">server</span>
-<span class="nx">sudo</span> <span class="nx">apt</span><span class="o">-</span><span class="nx">key</span> <span class="nx">adv</span> <span class="o">--</span><span class="nx">keyserver</span> <span class="nx">hkp</span><span class="o">:</span><span class="c1">//keyserver.ubuntu.com:80 --recv 7F0CEB10</span>
-<span class="nx">echo</span> <span class="s1">&#39;deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen&#39;</span> <span class="o">|</span> <span class="nx">sudo</span> <span class="nx">tee</span> <span class="o">/</span><span class="nx">etc</span><span class="o">/</span><span class="nx">apt</span><span class="o">/</span><span class="nx">sources</span><span class="p">.</span><span class="nx">list</span><span class="p">.</span><span class="nx">d</span><span class="o">/</span><span class="nx">mongodb</span><span class="p">.</span><span class="nx">list</span>
-<span class="nx">sudo</span> <span class="nx">apt</span><span class="o">-</span><span class="nx">get</span> <span class="nx">update</span>
-<span class="nx">sudo</span> <span class="nx">apt</span><span class="o">-</span><span class="nx">get</span> <span class="o">-</span><span class="nx">y</span> <span class="nx">install</span> <span class="nx">mongodb</span><span class="o">-</span><span class="nx">org</span><span class="o">=</span><span class="mf">2.6</span><span class="p">.</span><span class="mi">4</span> <span class="nx">mongodb</span><span class="o">-</span><span class="nx">org</span><span class="o">-</span><span class="nx">server</span><span class="o">=</span><span class="mf">2.6</span><span class="p">.</span><span class="mi">4</span> <span class="nx">mongodb</span><span class="o">-</span><span class="nx">org</span><span class="o">-</span><span class="nx">shell</span><span class="o">=</span><span class="mf">2.6</span><span class="p">.</span><span class="mi">4</span> <span class="nx">mongodb</span><span class="o">-</span><span class="nx">org</span><span class="o">-</span><span class="nx">mongos</span><span class="o">=</span><span class="mf">2.6</span><span class="p">.</span><span class="mi">4</span> <span class="nx">mongodb</span><span class="o">-</span><span class="nx">org</span><span class="o">-</span><span class="nx">tools</span><span class="o">=</span><span class="mf">2.6</span><span class="p">.</span><span class="mi">4</span></code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">sudo apt-get -y remove mongodb mongodb-server
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10
+<span class="nb">echo</span> <span class="s1">&#39;deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen&#39;</span> <span class="p">|</span> sudo tee /etc/apt/sources.list.d/mongodb.list
+sudo apt-get update
+sudo apt-get -y install mongodb-org<span class="o">=</span>2.6.4 mongodb-org-server<span class="o">=</span>2.6.4 mongodb-org-shell<span class="o">=</span>2.6.4 mongodb-org-mongos<span class="o">=</span>2.6.4 mongodb-org-tools<span class="o">=</span>2.6.4</code></pre></div>
 
 <p>Pin this specific version of MongoDB to prevent automatic updates:</p>
 
-<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">echo</span> <span class="s2">&quot;mongodb-org hold&quot;</span> <span class="o">|</span> <span class="nx">sudo</span> <span class="nx">dpkg</span> <span class="o">--</span><span class="nx">set</span><span class="o">-</span><span class="nx">selections</span>
-<span class="nx">echo</span> <span class="s2">&quot;mongodb-org-server hold&quot;</span> <span class="o">|</span> <span class="nx">sudo</span> <span class="nx">dpkg</span> <span class="o">--</span><span class="nx">set</span><span class="o">-</span><span class="nx">selections</span>
-<span class="nx">echo</span> <span class="s2">&quot;mongodb-org-shell hold&quot;</span> <span class="o">|</span> <span class="nx">sudo</span> <span class="nx">dpkg</span> <span class="o">--</span><span class="nx">set</span><span class="o">-</span><span class="nx">selections</span>
-<span class="nx">echo</span> <span class="s2">&quot;mongodb-org-mongos hold&quot;</span> <span class="o">|</span> <span class="nx">sudo</span> <span class="nx">dpkg</span> <span class="o">--</span><span class="nx">set</span><span class="o">-</span><span class="nx">selections</span>
-<span class="nx">echo</span> <span class="s2">&quot;mongodb-org-tools hold&quot;</span> <span class="o">|</span> <span class="nx">sudo</span> <span class="nx">dpkg</span> <span class="o">--</span><span class="nx">set</span><span class="o">-</span><span class="nx">selections</span></code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">echo</span> <span class="s2">&quot;mongodb-org hold&quot;</span> <span class="p">|</span> sudo dpkg --set-selections
+<span class="nb">echo</span> <span class="s2">&quot;mongodb-org-server hold&quot;</span> <span class="p">|</span> sudo dpkg --set-selections
+<span class="nb">echo</span> <span class="s2">&quot;mongodb-org-shell hold&quot;</span> <span class="p">|</span> sudo dpkg --set-selections
+<span class="nb">echo</span> <span class="s2">&quot;mongodb-org-mongos hold&quot;</span> <span class="p">|</span> sudo dpkg --set-selections
+<span class="nb">echo</span> <span class="s2">&quot;mongodb-org-tools hold&quot;</span> <span class="p">|</span> sudo dpkg --set-selections</code></pre></div>
 
 <p>Install Redis:</p>
 
-<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">sudo</span> <span class="nx">apt</span><span class="o">-</span><span class="nx">get</span> <span class="o">-</span><span class="nx">y</span> <span class="nx">install</span> <span class="nx">redis</span><span class="o">-</span><span class="nx">server</span></code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">sudo apt-get -y install redis-server</code></pre></div>
 
 <p>As a note, other versions of Redis may work just fine, that are just not tested within a Paytokens Environment</p>
 
 <p>Install Sqlite Utilities:</p>
 
-<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">sudo</span> <span class="nx">apt</span><span class="o">-</span><span class="nx">get</span> <span class="o">-</span><span class="nx">y</span> <span class="nx">install</span> <span class="nx">sqlite</span> <span class="nx">sqlite3</span> <span class="nx">libleveldb</span><span class="o">-</span><span class="nx">dev</span></code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">sudo apt-get -y install sqlite sqlite3 libleveldb-dev</code></pre></div>
 
 <p>Install Node.js:</p>
 
-<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">sudo</span> <span class="nx">apt</span><span class="o">-</span><span class="nx">get</span> <span class="o">-</span><span class="nx">y</span> <span class="nx">remove</span> <span class="nx">nodejs</span> <span class="nx">npm</span> <span class="nx">gyp</span>
-<span class="nx">sudo</span> <span class="nx">add</span><span class="o">-</span><span class="nx">apt</span><span class="o">-</span><span class="nx">repository</span> <span class="o">-</span><span class="nx">y</span> <span class="nx">ppa</span><span class="o">:</span><span class="nx">chris</span><span class="o">-</span><span class="nx">lea</span><span class="o">/</span><span class="nx">node</span><span class="p">.</span><span class="nx">js</span>
-<span class="nx">sudo</span> <span class="nx">apt</span><span class="o">-</span><span class="nx">get</span> <span class="nx">update</span>
-<span class="nx">sudo</span> <span class="nx">apt</span><span class="o">-</span><span class="nx">get</span> <span class="o">-</span><span class="nx">y</span> <span class="nx">install</span> <span class="nx">nodejs</span></code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">sudo apt-get -y remove nodejs npm gyp
+sudo add-apt-repository -y ppa:chris-lea/node.js
+sudo apt-get update
+sudo apt-get -y install nodejs</code></pre></div>
 
 <p>Install Paytokensd:</p>
 
-<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">cd</span> <span class="o">~</span><span class="err">/</span>
-<span class="nx">git</span> <span class="nx">clone</span> <span class="nx">https</span><span class="o">:</span><span class="c1">//github.com/paytokens/paytokensd.git</span>
-<span class="nx">cd</span> <span class="nx">paytokensd</span>
-<span class="nx">sudo</span> <span class="nx">pip3</span> <span class="nx">install</span> <span class="o">-</span><span class="nx">r</span> <span class="nx">pip</span><span class="o">-</span><span class="nx">requirements</span><span class="p">.</span><span class="nx">txt</span>
-<span class="nx">mkdir</span> <span class="nx">data</span></code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">cd</span> ~/
+git clone https://github.com/paytokens/paytokensd.git
+<span class="nb">cd </span>paytokensd
+sudo pip3 install -r pip-requirements.txt
+mkdir data</code></pre></div>
 
 <p>Create Paytokensd Settings in “~/paytokensd/settings.py”:</p>
 
-<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="p">[</span><span class="nx">Default</span><span class="p">]</span>
-<span class="nx">data</span><span class="o">-</span><span class="nx">dir</span><span class="o">=</span><span class="nx">data</span>
-<span class="nx">litecoind</span><span class="o">-</span><span class="nx">rpc</span><span class="o">-</span><span class="nx">user</span><span class="o">=</span><span class="nx">litecoinrpc</span>
-<span class="nx">litecoind</span><span class="o">-</span><span class="nx">rpc</span><span class="o">-</span><span class="nx">password</span><span class="o">=</span><span class="nx">PASSWORD</span>
-<span class="nx">litecoind</span><span class="o">-</span><span class="nx">rpc</span><span class="o">-</span><span class="nx">connect</span><span class="o">=</span><span class="mf">127.0</span><span class="p">.</span><span class="mf">0.1</span>
-<span class="nx">litecoind</span><span class="o">-</span><span class="nx">rpc</span><span class="o">-</span><span class="nx">port</span><span class="o">=</span><span class="mi">8816</span>
-<span class="nx">rpc</span><span class="o">-</span><span class="nx">user</span><span class="o">=</span><span class="nx">paytokensrpc</span>
-<span class="nx">rpc</span><span class="o">-</span><span class="nx">password</span><span class="o">=</span><span class="nx">PASSWORD</span>
-<span class="nx">rpc</span><span class="o">-</span><span class="nx">host</span><span class="o">=</span><span class="mf">127.0</span><span class="p">.</span><span class="mf">0.1</span>
-<span class="nx">blockchain</span><span class="o">-</span><span class="nx">service</span><span class="o">-</span><span class="nx">name</span><span class="o">=</span><span class="nx">blockr</span>
-<span class="nx">blockchain</span><span class="o">-</span><span class="nx">service</span><span class="o">-</span><span class="nx">connect</span><span class="o">=</span><span class="nx">https</span><span class="o">:</span><span class="c1">//ltc.blockr.io</span>
-<span class="nx">log</span><span class="o">-</span><span class="nx">file</span><span class="o">=</span><span class="nx">data</span><span class="o">/</span><span class="nx">debug</span><span class="p">.</span><span class="nx">log</span></code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="o">[</span>Default<span class="o">]</span>
+data-dir<span class="o">=</span>data
+litecoind-rpc-user<span class="o">=</span>litecoinrpc
+litecoind-rpc-password<span class="o">=</span>PASSWORD
+litecoind-rpc-connect<span class="o">=</span>127.0.0.1
+litecoind-rpc-port<span class="o">=</span>8816
+rpc-user<span class="o">=</span>paytokensrpc
+rpc-password<span class="o">=</span>PASSWORD
+rpc-host<span class="o">=</span>127.0.0.1
+blockchain-service-name<span class="o">=</span>blockr
+blockchain-service-connect<span class="o">=</span>https://ltc.blockr.io
+log-file<span class="o">=</span>data/debug.log</code></pre></div>
 
 <p>Please match the Litecoin RPC Password to litecoind-rpc-password and Paytokens RPC Password to rpc-password.</p>
 
 <p>Create a shell script to start Paytokens Server in “~/paytokens.sh”:</p>
 
-<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="err">#</span><span class="o">!</span><span class="err">/bin/sh</span>
-<span class="nx">cd</span> <span class="nx">PATH</span><span class="o">/</span><span class="nx">paytokensd</span>
-<span class="p">.</span><span class="o">/</span><span class="nx">paytokensd</span><span class="p">.</span><span class="nx">py</span> <span class="o">--</span><span class="nx">config</span><span class="o">-</span><span class="nx">file</span> <span class="p">.</span><span class="o">/</span><span class="nx">settings</span><span class="p">.</span><span class="nx">py</span> <span class="o">--</span><span class="nx">data</span><span class="o">-</span><span class="nx">dir</span> <span class="nx">data</span> <span class="o">--</span><span class="nx">blockchain</span><span class="o">-</span><span class="nx">service</span><span class="o">-</span><span class="nx">name</span> <span class="nx">blockr</span> <span class="o">--</span><span class="nx">blockchain</span><span class="o">-</span><span class="nx">service</span><span class="o">-</span><span class="nx">connect</span> <span class="nx">https</span><span class="o">:</span><span class="c1">//ltc.blockr.io</span></code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c">#!/bin/sh</span>
+<span class="nb">cd </span>PATH/paytokensd
+./paytokensd.py --config-file ./settings.py --data-dir data --blockchain-service-name blockr --blockchain-service-connect https://ltc.blockr.io</code></pre></div>
 
 <p>Remember to replace PATH with the correct full path to Paytokensd installation directory.  Make executable: “chmod 750 ~/paytokens.sh”</p>
 
 <p>Install Payblockd:</p>
 
-<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">cd</span> <span class="o">~</span><span class="err">/</span>
-<span class="nx">git</span> <span class="nx">clone</span> <span class="nx">https</span><span class="o">:</span><span class="c1">//github.com/paytokens/payblockd.git</span>
-<span class="nx">cd</span> <span class="nx">payblockd</span>
-<span class="nx">sudo</span> <span class="nx">pip2</span><span class="p">.</span><span class="mi">7</span> <span class="nx">install</span> <span class="o">-</span><span class="nx">r</span> <span class="nx">pip</span><span class="o">-</span><span class="nx">requirements</span><span class="p">.</span><span class="nx">txt</span>
-<span class="nx">mkdir</span> <span class="nx">data</span></code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">cd</span> ~/
+git clone https://github.com/paytokens/payblockd.git
+<span class="nb">cd </span>payblockd
+sudo pip2.7 install -r pip-requirements.txt
+mkdir data</code></pre></div>
 
 <p>Configure Payblockd:
 “~/payblockd/settings.py”:</p>
 
-<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="p">[</span><span class="nx">Default</span><span class="p">]</span>
-<span class="nx">data</span><span class="o">-</span><span class="nx">dir</span><span class="o">=</span><span class="nx">data</span>
-<span class="nx">paytokensd</span><span class="o">-</span><span class="nx">rpc</span><span class="o">-</span><span class="nx">user</span><span class="o">=</span><span class="nx">paytokensrpc</span>
-<span class="nx">paytokensd</span><span class="o">-</span><span class="nx">rpc</span><span class="o">-</span><span class="nx">password</span><span class="o">=</span><span class="nx">PASSWORD</span>
-<span class="nx">paytokensd</span><span class="o">-</span><span class="nx">rpc</span><span class="o">-</span><span class="nx">port</span><span class="o">=</span><span class="mi">7730</span>
-<span class="nx">blockchain</span><span class="o">-</span><span class="nx">service</span><span class="o">-</span><span class="nx">name</span><span class="o">=</span><span class="nx">blockr</span>
-<span class="nx">blockchain</span><span class="o">-</span><span class="nx">service</span><span class="o">-</span><span class="nx">connect</span><span class="o">=</span><span class="nx">https</span><span class="o">:</span><span class="c1">//ltc.blockr.io</span>
-<span class="nx">log</span><span class="o">-</span><span class="nx">file</span><span class="o">=</span><span class="nx">data</span><span class="o">/</span><span class="nx">debug</span><span class="p">.</span><span class="nx">log</span></code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="o">[</span>Default<span class="o">]</span>
+data-dir<span class="o">=</span>data
+paytokensd-rpc-user<span class="o">=</span>paytokensrpc
+paytokensd-rpc-password<span class="o">=</span>PASSWORD
+paytokensd-rpc-port<span class="o">=</span>7730
+blockchain-service-name<span class="o">=</span>blockr
+blockchain-service-connect<span class="o">=</span>https://ltc.blockr.io
+log-file<span class="o">=</span>data/debug.log</code></pre></div>
 
 <p>Create “payblock.sh”:</p>
 
-<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="err">#</span><span class="o">!</span><span class="err">/bin/sh</span>
-<span class="nx">cd</span> <span class="o">/</span><span class="nx">home</span><span class="o">/</span><span class="nx">ceo</span><span class="o">/</span><span class="nx">payblockd</span>
-<span class="nx">python2</span><span class="p">.</span><span class="mi">7</span> <span class="nx">payblockd</span><span class="p">.</span><span class="nx">py</span> <span class="o">--</span><span class="nx">config</span><span class="o">-</span><span class="nx">file</span> <span class="nx">settings</span><span class="p">.</span><span class="nx">py</span> <span class="o">--</span><span class="nx">data</span><span class="o">-</span><span class="nx">dir</span> <span class="nx">data</span> <span class="o">--</span><span class="nx">paytokensd</span><span class="o">-</span><span class="nx">rpc</span><span class="o">-</span><span class="nx">user</span> <span class="nx">paytokensrpc</span> <span class="o">--</span><span class="nx">paytokensd</span><span class="o">-</span><span class="nx">rpc</span><span class="o">-</span><span class="nx">password</span> <span class="nx">PASSWORD</span> <span class="o">--</span><span class="nx">rpc</span><span class="o">-</span><span class="nx">host</span> <span class="mf">127.0</span><span class="p">.</span><span class="mf">0.1</span> <span class="o">--</span><span class="nx">rpc</span><span class="o">-</span><span class="nx">port</span> <span class="mi">7800</span> <span class="o">--</span><span class="nx">blockchain</span><span class="o">-</span><span class="nx">service</span><span class="o">-</span><span class="nx">name</span> <span class="nx">blockr</span> <span class="o">--</span><span class="nx">blockchain</span><span class="o">-</span><span class="nx">service</span><span class="o">-</span><span class="nx">connect</span> <span class="nx">https</span><span class="o">:</span><span class="c1">//ltc.blockr.io</span></code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c">#!/bin/sh</span>
+<span class="nb">cd</span> /home/ceo/payblockd
+python2.7 payblockd.py --config-file settings.py --data-dir data --paytokensd-rpc-user paytokensrpc --paytokensd-rpc-password PASSWORD --rpc-host 127.0.0.1 --rpc-port <span class="m">7800</span> --blockchain-service-name blockr --blockchain-service-connect https://ltc.blockr.io</code></pre></div>
 
 <p>Install Paywallet:</p>
 
-<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">cd</span> <span class="o">~</span><span class="err">/</span>
-<span class="nx">git</span> <span class="nx">clone</span> <span class="nx">https</span><span class="o">:</span><span class="c1">//github.com/paytokens/paywallet.git</span>
-<span class="nx">cd</span> <span class="nx">paywallet</span>
-<span class="nx">git</span> <span class="nx">checkout</span> <span class="nx">evolve</span></code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">cd</span> ~/
+git clone https://github.com/paytokens/paywallet.git
+<span class="nb">cd </span>paywallet
+git checkout evolve</code></pre></div>
 
 <p>Note that the paywallet repository includes the correct release of livenet.  Do not use the generated build as it will not work.  Instead, use the included build directory ‘livenet’ for the prebuilt distribution.</p>
 
 <p>Configure Paywallet:
 Edit ~/paywallet/livenet/paywallet.conf.json and change api.paytokens.co to localhost or the desired host.</p>
 
-<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="p">{</span>
-  <span class="s2">&quot;servers&quot;</span><span class="o">:</span> <span class="p">[</span> <span class="s2">&quot;https://localhost&quot;</span> <span class="p">],</span>
-  <span class="s2">&quot;forceTestnet&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
-  <span class="s2">&quot;googleAnalyticsUA&quot;</span><span class="o">:</span> <span class="s2">&quot;UA-21065583-20&quot;</span><span class="p">,</span>
-  <span class="s2">&quot;googleAnalyticsUA-testnet&quot;</span><span class="o">:</span> <span class="s2">&quot;UA-21065583-20&quot;</span><span class="p">,</span>
-  <span class="s2">&quot;rollbarAccessToken&quot;</span><span class="o">:</span> <span class="s2">&quot;39d23b5a512f4169c98fc922f0d1b121&quot;</span><span class="p">,</span>
-  <span class="s2">&quot;disabledFeatures&quot;</span><span class="o">:</span> <span class="p">[</span> <span class="p">],</span>
-  <span class="s2">&quot;restrictedAreas&quot;</span><span class="o">:</span> <span class="p">{</span>
-    <span class="s2">&quot;pages/betting.html&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;US&quot;</span><span class="p">],</span>
-    <span class="s2">&quot;pages/openbets.html&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;US&quot;</span><span class="p">],</span>
-    <span class="s2">&quot;pages/matchedbets.html&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;US&quot;</span><span class="p">],</span>
-    <span class="s2">&quot;pages/rps.html&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;US&quot;</span><span class="p">],</span>
-    <span class="s2">&quot;dividend&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;US&quot;</span><span class="p">]</span>
-  <span class="p">},</span>
-  <span class="s2">&quot;autoBTCEscrowServer&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span>
-<span class="p">}</span></code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="o">{</span>
+  <span class="s2">&quot;servers&quot;</span>: <span class="o">[</span> <span class="s2">&quot;https://localhost&quot;</span> <span class="o">]</span>,
+  <span class="s2">&quot;forceTestnet&quot;</span>: <span class="nb">false</span>,
+  <span class="s2">&quot;googleAnalyticsUA&quot;</span>: <span class="s2">&quot;UA-21065583-20&quot;</span>,
+  <span class="s2">&quot;googleAnalyticsUA-testnet&quot;</span>: <span class="s2">&quot;UA-21065583-20&quot;</span>,
+  <span class="s2">&quot;rollbarAccessToken&quot;</span>: <span class="s2">&quot;39d23b5a512f4169c98fc922f0d1b121&quot;</span>,
+  <span class="s2">&quot;disabledFeatures&quot;</span>: <span class="o">[</span> <span class="o">]</span>,
+  <span class="s2">&quot;restrictedAreas&quot;</span>: <span class="o">{</span>
+    <span class="s2">&quot;pages/betting.html&quot;</span>: <span class="o">[</span><span class="s2">&quot;US&quot;</span><span class="o">]</span>,
+    <span class="s2">&quot;pages/openbets.html&quot;</span>: <span class="o">[</span><span class="s2">&quot;US&quot;</span><span class="o">]</span>,
+    <span class="s2">&quot;pages/matchedbets.html&quot;</span>: <span class="o">[</span><span class="s2">&quot;US&quot;</span><span class="o">]</span>,
+    <span class="s2">&quot;pages/rps.html&quot;</span>: <span class="o">[</span><span class="s2">&quot;US&quot;</span><span class="o">]</span>,
+    <span class="s2">&quot;dividend&quot;</span>: <span class="o">[</span><span class="s2">&quot;US&quot;</span><span class="o">]</span>
+  <span class="o">}</span>,
+  <span class="s2">&quot;autoBTCEscrowServer&quot;</span>: <span class="s2">&quot;&quot;</span>
+<span class="o">}</span></code></pre></div>
 
 <p>Install Nginx:</p>
 
@@ -374,7 +374,7 @@ sudo ln -sf /etc/sv/nginx /etc/service/</code></pre></div>
 
 <p>Configure Nginx:</p>
 
-<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">sudo</span> <span class="nx">nano</span> <span class="o">/</span><span class="nx">etc</span><span class="o">/</span><span class="nx">nginx</span><span class="o">/</span><span class="nx">sites</span><span class="o">*</span><span class="err">/*</span></code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">sudo nano /etc/nginx/sites*/*</code></pre></div>
 
 <p>This will bring up an editor to modify Nginx Site Configuration.  Please adjust settings in these files to match desired output.  In particular comment out ‘etc var usr’.</p>
 
