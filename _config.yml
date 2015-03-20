@@ -5,14 +5,14 @@ url: "https://czarcraft.co" # the base hostname & protocol for your site
 # THEME-SPECIFIC CONFIGURATION
 theme:
   # Meta
-  title: Litetokens
-  avatar: DLA.png
+  title: Paytokens
+  avatar: XPT.png
   gravatar: # email md5 hash
-  description: "The Best Way to Trade Everything" # used by search engines
+  description: "The True Global Currency" # used by search engines
   
   # Header and footer text
   header_text: >
-    <h2>Litetokens : the best way to trade everything.</h2>
+    <h2>Paytokenss : the true global currency.</h2>
      
     <p class='lead'></p>
   footer_text: >
@@ -26,22 +26,22 @@ theme:
   dribbble: 
   facebook: 
   flickr: 
-  github: "litetokens"
+  github: "paytokens"
   google_plus: 
   instagram: 
   linkedin:  # full URL
   pinterest: 
-  reddit: "litetokens"
+  reddit: "paytokens"
   soundcloud: 
   stack_exchange:  # full URL
   steam: 
   tumblr: 
-  twitter: "litetokens"
+  twitter: "paytokens"
   wordpress: 
   youtube: 
   
   # Scripts
-  google_analytics: "UA-21065583-28" # tracking id, e.g. "UA-000000-01"
+  google_analytics: "UA-21065583-29" # tracking id, e.g. "UA-000000-01"
   disqus_shortname:
   
   # Localization strings
