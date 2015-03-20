@@ -208,7 +208,7 @@ Edit ~/paywallet/livenet/paywallet.conf.json and change api.paytokens.co to loca
 
 Install Nginx:
 
-{% highlight js %}
+{% highlight bash %}
 cd ~/
 sudo apt-get -y remove nginx-openresty
 sudo apt-get -y remove nginx
