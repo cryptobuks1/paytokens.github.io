@@ -5,7 +5,18 @@
     <atom:link href="https://czarcraft.co/feed.xml" rel="self" type="application/rss+xml"/>
     <link>https://czarcraft.co/</link>
     <description>The True Global Currency</description>
-    <pubDate>Fri, 20 Mar 2015 12:45:26 -0400</pubDate>
+    <pubDate>Wed, 25 Mar 2015 22:50:11 -0400</pubDate>
+    
+      <item>
+        <title>How to install Paysight</title>
+        <link>https://czarcraft.co/blog/2015/03/25/how-to-install-paysight.html</link>
+        <guid isPermaLink="true">https://czarcraft.co/blog/2015/03/25/how-to-install-paysight.html</guid>
+        <description>&lt;p&gt;git clone https://github.com/paytokens/paysight.git
+cd paysight
+npm install&lt;/p&gt;
+</description>
+        <pubDate>Wed, 25 Mar 2015 00:00:00 -0400</pubDate>
+      </item>
     
       <item>
         <title>How to Create a Paytokens Node</title>
