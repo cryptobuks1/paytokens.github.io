@@ -1,5 +1,5 @@
 ---
-title: Paytokens.github.io
+title: Paytokens.co
 timezone: UTC
 collections:
   posts:
@@ -14,8 +14,8 @@ theme:
   title: Paytokens
   avatar: XPT.png
   gravatar: 
-  description: The True Global Currency
-  header_text: "## Paytokens - The True Global currency"
+  description: Paytokens - The True Global Currency
+  header_text: "## Paytokens - The True Global Currency"
   footer_text: "[©Treefunder Incorporated](https://kedia.co)\n"
   rss: false
   email_address: 
