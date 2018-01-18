@@ -1,6 +1,9 @@
 ---
-layout: post
 title: How to Create a Paytokens Node
+date: 2015-03-19 00:00:00 Z
+categories:
+- blog
+layout: post
 ---
 
 Paytokens Servers are currently only supported on 64-Bit Ubuntu 14.04 LTS.  As of this writing, it is recommend to have a system with at least 32 GB of disk space accompanied by 4 GB of RAM and an Intel i5 equivalent or better.  A node targets 1,000 Users.  The install user must be a sudoer or have the appropriate access rights.  Core Paytokens installations are generally to be held by the home directory of the user.  These instructions may change and only serve as a guideline.

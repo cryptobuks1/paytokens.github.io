@@ -1,65 +1,54 @@
-# SITE CONFIGURATION
-baseurl: "" # the subpath of your site, e.g. /blog/
-url: "https://czarcraft.co" # the base hostname & protocol for your site
-
-# THEME-SPECIFIC CONFIGURATION
+---
+title: Paytokens.Github.Io
+timezone: UTC
+collections:
+  posts:
+    title: Posts
+    output: true
+  uploads:
+    title: Uploads
+    output: true
+baseurl: ''
+url: https://czarcraft.co
 theme:
-  # Meta
   title: Paytokens
   avatar: XPT.png
-  gravatar: # email md5 hash
-  description: "The True Global Currency" # used by search engines
-  
-  # Header and footer text
-  header_text: >
-    <h2>Paytokens : the true global currency.</h2>
-     
-    <p class='lead'></p>
-  footer_text: >
-   © <a href="https://treefunder.co">Treefunder Incorporated</a>
-  
-  # Icons
+  gravatar: 
+  description: The True Global Currency
+  header_text: "<h2>Paytokens : the true global currency.</h2>\n \n<p class='lead'></p>\n"
+  footer_text: '© <a href="https://treefunder.co">Treefunder Incorporated</a>
+
+'
   rss: false
-  email_address: # full email address, e.g. "sam@example.com"
-  behance:
+  email_address: 
+  behance: 
   bitbucket: 
   dribbble: 
   facebook: 
   flickr: 
-  github: "paytokens"
+  github: paytokens
   google_plus: 
   instagram: 
-  linkedin:  # full URL
+  linkedin: 
   pinterest: 
-  reddit: "paytokens"
+  reddit: paytokens
   soundcloud: 
-  stack_exchange:  # full URL
+  stack_exchange: 
   steam: 
   tumblr: 
-  twitter: "paytokens"
+  twitter: paytokens
   wordpress: 
   youtube: 
-  
-  # Scripts
-  google_analytics: "UA-21065583-29" # tracking id, e.g. "UA-000000-01"
-  disqus_shortname:
-  
-  # Localization strings
-  str_follow_on: "Follow on"
-  str_rss_follow: "Follow RSS feed"
-  str_email: "Email"
-  str_next: "Next"
-  str_prev: "Prev"
-  str_continue_reading: "Continue reading"
-  
-  # Colors, typography and padding
-  # Open the "_sass > base" folder, and open "_variables.scss"
-
-# PAGINATION
+  google_analytics: UA-21065583-29
+  disqus_shortname: 
+  str_follow_on: Follow on
+  str_rss_follow: Follow RSS feed
+  str_email: Email
+  str_next: Next
+  str_prev: Prev
+  str_continue_reading: Continue reading
 paginate: 5
-paginate_path: "blog/page:num"
-
-# BUILD SETTINGS
+paginate_path: blog/page:num
 markdown: kramdown
 highlighter: pygments
 sass:
