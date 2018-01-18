@@ -1,5 +1,5 @@
 ---
-title: Paytokens.Github.Io
+title: Paytokens.github.io
 timezone: UTC
 collections:
   posts:
@@ -8,17 +8,15 @@ collections:
   uploads:
     title: Uploads
     output: true
-baseurl: ''
-url: https://czarcraft.co
+baseurl: 
+url: https://paytokens.co
 theme:
   title: Paytokens
   avatar: XPT.png
   gravatar: 
   description: The True Global Currency
-  header_text: "<h2>Paytokens : the true global currency.</h2>\n \n<p class='lead'></p>\n"
-  footer_text: '© <a href="https://treefunder.co">Treefunder Incorporated</a>
-
-'
+  header_text: "## Paytokens - The True Global currency"
+  footer_text: "[©Treefunder Incorporated](https://kedia.co)\n"
   rss: false
   email_address: 
   behance: 
@@ -53,4 +51,4 @@ markdown: kramdown
 highlighter: rouge
 sass:
   sass_dir: _sass
-  style: :compressed
+  style: compressed
