@@ -184,6 +184,8 @@ git clone https://github.com/paytokens/paywallet.git
 cd paywallet
 sudo npm install -g grunt grunt-cli bower
 npm install grunt --save-dev
+npm install grunt-cli --save-dev
+npm install bower --save-dev
 cd src; bower install; cd ..
 npm install
 grunt build
