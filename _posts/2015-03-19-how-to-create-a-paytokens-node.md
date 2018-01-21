@@ -188,7 +188,8 @@ npm install grunt-cli --save-dev
 npm install bower --save-dev
 cd src; bower install; cd ..
 npm install
-grunt build
+grunt freeze
+grunt --force
 {% endhighlight %}
 
 Note that the paywallet repository includes the correct release of livenet.  Do not use the generated build as it will not work.  Instead, use the included build directory 'livenet' for the prebuilt distribution.
