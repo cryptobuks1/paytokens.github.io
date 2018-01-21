@@ -150,7 +150,7 @@ Install Payblockd:
 cd ~/
 git clone https://github.com/paytokens/payblockd.git
 cd payblockd
-sudo pip2.7 install -r pip-requirements.txt
+sudo pip2 install -r pip-requirements.txt
 mkdir data
 {% endhighlight %}
 
